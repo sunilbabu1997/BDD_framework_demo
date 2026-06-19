@@ -8,12 +8,14 @@
       {
         "email": "",
         "password": "",
-        "expectedError": "Required"
+        "expectedError": "Required",
+        "type": "field"
       },
       {
         "email": "InvalidUser",
         "password": "wrongpassword",
-        "expectedError": "Invalid credentials"
+        "expectedError": "Invalid credentials",
+        "type": "alert"
       }
     ]
   },

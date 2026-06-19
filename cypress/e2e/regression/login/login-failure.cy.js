@@ -8,10 +8,14 @@ describe('OrangeHRM Login — Failure Scenarios', () => {
     loginPage.visit();
   });
 
-  loginData.invalidCredentials.testCases.forEach(({ email, password, expectedError }, index) => {
+  loginData.invalidCredentials.testCases.forEach(({ email, password, expectedError, type }, index) => {
     it(`should show error for: email="${email || '(empty)'}" (case ${index + 1})`, () => {
       loginPage.login(email, password);
-      loginPage.assertErrorMessage(expectedError);
+      if (type === 'field') {
+        loginPage.assertFieldError(expectedError);
+      } else {
+        loginPage.assertAlertError(expectedError);
+      }
     });
   });
 

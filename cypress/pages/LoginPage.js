@@ -6,6 +6,7 @@ class LoginPage extends BasePage {
   get passwordInput() { return 'input[type="password"]'; }
   get loginButton() { return 'button[type="submit"]'; }
   get errorMessage() { return '.oxd-alert-content-text'; }
+  get fieldError() { return '.oxd-input-group__message'; }
   get forgotPasswordLink() { return '.orangehrm-login-forgot'; }
   get loginPanelTitle() { return '.orangehrm-login-title'; }
 
@@ -14,13 +15,21 @@ class LoginPage extends BasePage {
   }
 
   login(email, password) {
-    this.typeText(this.emailInput, email);
-    this.typeText(this.passwordInput, password);
+    if (email) {
+      this.typeText(this.emailInput, email);
+    }
+    if (password) {
+      this.typeText(this.passwordInput, password);
+    }
     this.clickElement(this.loginButton);
   }
 
-  assertErrorMessage(expectedText) {
+  assertAlertError(expectedText) {
     cy.get(this.errorMessage).should('contain.text', expectedText);
+  }
+
+  assertFieldError(expectedText) {
+    cy.get(this.fieldError).should('contain.text', expectedText);
   }
 
   assertPageLoad() {
