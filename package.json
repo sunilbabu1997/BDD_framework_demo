@@ -1,0 +1,23 @@
+{
+  "name": "cypress-framework-template",
+  "version": "1.0.0",
+  "description": "Cypress test automation framework with Page Object Model for OrangeHRM demo site",
+  "main": "cypress.config.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:smoke": "cypress run --spec \"cypress/e2e/smoke/**\"",
+    "cy:regression": "cypress run --spec \"cypress/e2e/regression/**\"",
+    "cy:report": "cypress run --reporter junit"
+  },
+  "keywords": [
+    "cypress",
+    "testing",
+    "e2e",
+    "orangehrm"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^13.17.0"
+  }
+}

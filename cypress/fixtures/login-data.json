@@ -1,0 +1,24 @@
+{
+  "validCredentials": {
+    "email": "Admin",
+    "password": "admin123"
+  },
+  "invalidCredentials": {
+    "testCases": [
+      {
+        "email": "",
+        "password": "",
+        "expectedError": "Required"
+      },
+      {
+        "email": "InvalidUser",
+        "password": "wrongpassword",
+        "expectedError": "Invalid credentials"
+      }
+    ]
+  },
+  "errorMessages": {
+    "required": "Required",
+    "invalidCredentials": "Invalid credentials"
+  }
+}
