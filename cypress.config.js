@@ -15,11 +15,20 @@ module.exports = defineConfig({
       runMode: 1,
       openMode: 0,
     },
-    reporter: 'junit',
+    reporter: 'cypress-mochawesome-reporter',
     reporterOptions: {
-      mochaFile: 'cypress/reports/junit-[hash].xml',
+      charts: true,
+      reportPageTitle: 'OrangeHRM Cypress Test Report',
+      embeddedScreenshots: true,
+      inlineAssets: true,
+      saveAllAttempts: false,
+      reportDir: 'cypress/reports',
+      overwrite: false,
+      html: true,
+      json: true,
     },
     setupNodeEvents(on, config) {
+      require('cypress-mochawesome-reporter/plugin')(on);
       on('task', {
         deleteDownloads(folderPath) {
           return new Promise((resolve, reject) => {
